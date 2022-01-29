@@ -3,7 +3,8 @@
 @section('title') Create @endsection
 
 @section('content')
-        <form>
+        <form method="POST" action="/posts">
+            @csrf
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Title</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1">
