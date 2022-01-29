@@ -26,6 +26,7 @@ class PostController extends Controller
 
     public function store()
     {
+        // dd('test'); any logic after dd won't be executed
         //the logic to store post in the db
         return redirect()->route('posts.index');
     }
