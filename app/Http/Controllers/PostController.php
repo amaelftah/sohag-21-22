@@ -27,6 +27,6 @@ class PostController extends Controller
     public function store()
     {
         //the logic to store post in the db
-        return 'we are in store';
+        return redirect()->route('posts.index');
     }
 }

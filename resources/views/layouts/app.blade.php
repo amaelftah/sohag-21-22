@@ -19,7 +19,7 @@
                 <ul class="navbar-nav">
                  
                   <li class="nav-item">
-                    <a href="#" class="nav-link  text-white">All Posts</a>
+                    <a href="{{route('posts.index')}}" class="nav-link  text-white">All Posts</a>
                   </li>
                 </ul>
               </div>
