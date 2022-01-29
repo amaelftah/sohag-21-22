@@ -30,4 +30,10 @@ class PostController extends Controller
         //the logic to store post in the db
         return redirect()->route('posts.index');
     }
+
+    public function show($postId)
+    {
+        //query in db select * from posts where id = $postId
+        return $postId;
+    }
 }
