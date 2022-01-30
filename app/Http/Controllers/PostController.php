@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $allPosts = [
-            ['title' => 'First Post', 'posted_by'=> 'Ahmed', 'created_at' => '2022-01-20'],
-            ['title' => 'Second Post', 'posted_by'=> 'Mohamed', 'created_at' => '2022-01-20'],
-            ['title' => 'Third Post', 'posted_by'=> 'Ali', 'created_at' => '2022-01-20'],
-        ];
+        // $allPosts = Post::where('title','Test')->get();
+        $allPosts = Post::all(); //to retrieve all records
 
         return view('posts.index', [
             'allPosts' => $allPosts
@@ -21,11 +20,27 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $users = User::all();
+
+        return view('posts.create',[
+            'users' => $users
+        ]);
     }
 
     public function store()
     {
+        $data = request()->all();
+
+        // Post::create($data);
+        Post::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'user_id' => $data['post_creator'],
+            // will be ignored cause they aren't in fillable
+            // 'un_known_column' => 'ajshdahsouid',
+            // 'id' => 70,
+        ]);// insert into (title,descripotion) values ('asdasd')
+
         // dd('test'); any logic after dd won't be executed
         //the logic to store post in the db
         return redirect()->route('posts.index');

@@ -19,13 +19,15 @@
             </thead>
             <tbody>
              @foreach ($allPosts as $post)
+             {{-- @dd($post->user, $post->user()) --}}
               <tr>
-                <th scope="row">1</th>
-                <td>{{ $post['title'] }}</td>
-                <td>{{ $post['posted_by'] }}</td>
-                <td>{{ $post['created_at'] }}</td>
+                <th scope="row">{{ $post->id }}</th>
+                <td>{{ $post->title }}</td>
+                <td>{{ isset($post->user) ? $post->user->name : 'Not Found' }}</td>
+                {{-- @dd($post->created_at) carbon object --}}
+                <td>{{ $post->created_at }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">View</a>
                 </td>
               </tr>
               @endforeach
