@@ -24,7 +24,8 @@
                 <th scope="row">{{ $post->id }}</th>
                 <td>{{ $post->title }}</td>
                 <td>{{ isset($post->user) ? $post->user->name : 'Not Found' }}</td>
-                <td>{{ $post['created_at'] }}</td>
+                {{-- @dd($post->created_at) carbon object --}}
+                <td>{{ $post->created_at }}</td>
                 <td>
                     <a href="#" class="btn btn-primary">View</a>
                 </td>
