@@ -31,7 +31,7 @@ class PostController extends Controller
             'title' => $data['title'],
             'description' => $data['description'],
             // will be ignored cause they aren't in fillable
-            // 'iqhwouidhqoiwdh' => 'ajshdahsouid',
+            // 'un_known_column' => 'ajshdahsouid',
             // 'id' => 70,
         ]);// insert into (title,descripotion) values ('asdasd')
 
