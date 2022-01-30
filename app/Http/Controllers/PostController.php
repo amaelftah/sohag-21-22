@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $allPosts = [
-            ['title' => 'First Post', 'posted_by'=> 'Ahmed', 'created_at' => '2022-01-20'],
-            ['title' => 'Second Post', 'posted_by'=> 'Mohamed', 'created_at' => '2022-01-20'],
-            ['title' => 'Third Post', 'posted_by'=> 'Ali', 'created_at' => '2022-01-20'],
-        ];
+        // $allPosts = Post::where('title','Test')->get();
+        $allPosts = Post::all(); //to retrieve all records
 
         return view('posts.index', [
             'allPosts' => $allPosts
@@ -26,6 +24,17 @@ class PostController extends Controller
 
     public function store()
     {
+        $data = request()->all();
+
+        // Post::create($data);
+        Post::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            // will be ignored cause they aren't in fillable
+            // 'iqhwouidhqoiwdh' => 'ajshdahsouid',
+            // 'id' => 70,
+        ]);// insert into (title,descripotion) values ('asdasd')
+
         // dd('test'); any logic after dd won't be executed
         //the logic to store post in the db
         return redirect()->route('posts.index');
