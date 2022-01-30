@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -19,7 +20,11 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $users = User::all();
+
+        return view('posts.create',[
+            'users' => $users
+        ]);
     }
 
     public function store()
@@ -30,6 +35,7 @@ class PostController extends Controller
         Post::create([
             'title' => $data['title'],
             'description' => $data['description'],
+            'user_id' => $data['post_creator'],
             // will be ignored cause they aren't in fillable
             // 'un_known_column' => 'ajshdahsouid',
             // 'id' => 70,
