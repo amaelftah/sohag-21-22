@@ -14,4 +14,15 @@ class Post extends Model
         'description',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    //doesnot follow convention
+    // public function testRelation()
+    // {
+    //     return $this->belongsTo(User::class,'post_creator');
+    // }
 }
