@@ -27,7 +27,7 @@
                 {{-- @dd($post->created_at) carbon object --}}
                 <td>{{ $post->created_at }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">View</a>
                 </td>
               </tr>
               @endforeach
