@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -27,17 +28,18 @@ class PostController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
-        request()->validate([
-            'title' => ['required', 'min:3'],
-            'description' => ['required', 'min:5'],
-        ],[
-            'title.required' => 'this is the changed message',
-            'title.min' => 'i have changed the min'
-        ]);
+        // request()->validate([
+        //     'title' => ['required', 'min:3'],
+        //     'description' => ['required', 'min:5'],
+        // ],[
+        //     'title.required' => 'this is the changed message',
+        //     'title.min' => 'i have changed the min'
+        // ]);
 
-        $data = request()->all();
+        $data = $request->all();
+        // $data = request()->all();
 
         // Post::create($data);
         Post::create([
