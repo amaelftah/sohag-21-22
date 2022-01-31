@@ -29,6 +29,14 @@ class PostController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:5'],
+        ],[
+            'title.required' => 'this is the changed message',
+            'title.min' => 'i have changed the min'
+        ]);
+
         $data = request()->all();
 
         // Post::create($data);
